@@ -25,21 +25,34 @@
                 <Table id="idTable"
                        items="{/FlightSet}">
                        <columns>
-                        <Column ><Label text="Carrier"/></Column>
-                        <Column ><Label text="Connections"/></Column>
-                        <Column ><Label text="Flight Date"/></Column>
-                        <Column ><Label text="Price"/></Column>
-                        <Column ><Label text="Availability"/></Column>
-                        <Column ><Label text="Free Seats"/></Column>
+                            <Column ><Label text="Carrier"/></Column>
+                            <Column ><Label text="Connections"/></Column>   
+                            <Column ><Label text="Flight Date"/></Column>
+                            <Column ><Label text="Price"/></Column>
+                            <Column ><Label text="Availability"/></Column>
+                            <Column ><Label text="Free Seats"/></Column>
                        </columns>
 
                         <items>
                             <ColumnListItem >
                                 <ObjectIdentifier title="{Carrid}" />
                                 <ObjectIdentifier title="{Connid}" />
-                                <ObjectIdentifier title="{Fldate}" />
+                                <ObjectIdentifier title="{
+                                                    path: 'Fldate',
+                                                    type: 'sap.ui.model.type.Date',
+                                                    formatOptions:{
+                                                        pattern: 'yy.MM.dd'
+                                                    }
+                                                }" />
 
-                                <ObjectNumber number="{Price}" unit="{Currency}" />
+                                <ObjectNumber number="{
+                                                parts: [ {path: 'Price'}, {path: 'Currency'} ],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions:{
+                                                    showMeasure: false
+                                                    }
+                                                }" 
+                                    unit="{Currency}" />
                                 <CheckBox selected=""/>
                                 <Text text="" />
                             </ColumnListItem>
