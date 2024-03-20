@@ -3,13 +3,14 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
-    xmlns:t="sap.ui.table">
+    xmlns:t="sap.ui.table"
+    xmlns:l="sap.ui.layout">
+
     <Page id="page" title="{i18n>title}">
         <Toolbar>
-            <OverflowToolbar >
-                <ToolbarSpacer/>
-                <Button text="생성" press="onCreate" type="Accept"/>
-            </OverflowToolbar>
+            <ToolbarSpacer/>
+            <Button text="생성" press="onCreate" type="Accept"/>
+            <Button text="새로고침" icon="sap-icon://refresh" press="onRefresh"/>
         </Toolbar>
         <content>
             
@@ -51,7 +52,11 @@
                     <t:Column >
                         <Label text="{i18n>labelAction}"/>
                         <t:template>
-                            <Button icon="sap-icon://delete" press="onDelete"/>
+                            <l:HorizontalLayout>
+                            <!-- 반드시 하나만 있어야 함 ( HorizontalLayout 사용 )-->
+                                <Button icon="sap-icon://edit"   press="onUpdate" class="sapUiTinyMarginEnd"/>
+                                <Button icon="sap-icon://delete" press="onDelete"/>
+                            </l:HorizontalLayout>
                         </t:template>
                     </t:Column>
 
