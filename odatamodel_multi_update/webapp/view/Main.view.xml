@@ -58,7 +58,8 @@
                     </t:Column> -->
 
                     <t:Column >
-                        <Label text="{i18n>labelCurrcode}"/>
+                        <Label  design="Bold"
+                                text="{i18n>labelCurrcode}"/>
                         <t:template>
                             <HBox>
                             <!-- 조회모드에서 보여줄 항목 -->
