@@ -1,0 +1,70 @@
+<mvc:View
+    controllerName="sync.e25.odatamodelmultiupdate.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <t:Table 
+                id="idTable"
+                rows="{/CarrierSet}">
+
+                <t:extension>
+                    <!-- Toolbar -->
+                    <Toolbar >
+                        <ToolbarSpacer/>
+                        <Button icon="sap-icon://refresh" press="onRefresh"/>
+                        <Button icon="sap-icon://edit" 
+                                press="onEdit"
+                                visible="{= !${view>/EditMode}}" />
+                    </Toolbar>
+                </t:extension>
+
+                <t:columns>
+                    <!-- 컬럼 제목과 데이터 -->
+                    <t:Column width="7rem" hAlign="Center">
+                        <Label design="Bold" text="{i18n>labelCarrid}"/>
+                        <t:template>
+                            <ObjectIdentifier title="{Carrid}"/>
+                        </t:template>
+                    </t:Column>
+
+                     <t:Column> <!--visible="{view>/EditMode}"> -->
+                        <Label design="Bold" text="{i18n>labelCarrname}"/>
+                        <t:template>
+                            <HBox>
+                                
+                                <Input value="{
+                                    path: 'Carrname',
+                                    constraints: { length: 20 }
+                                }" 
+                                placeholder="항공사의 이름을 입력하세요." 
+                                valueLiveUpdate="true" 
+                                visible="{view>/EditMode}"
+                                maxLength="20"/> <!-- 항공사명은 최대 20자리 -->
+                                <Text text="{Carrname}" 
+                                visible="{= !${view>/EditMode} }"/>
+                            </HBox>
+                        </t:template>
+                    </t:Column>
+
+                    <!-- <t:Column visible="{= !${view>/EditMode} }">
+                        <Label design="Bold" text="{i18n>labelCarrname}"/>
+                        <t:template>
+                            <Text text="{Carrname}" />
+                        </t:template>
+                    </t:Column> -->
+                </t:columns>
+            </t:Table>
+        </content>
+
+        <footer>
+            <OverflowToolbar visible="{view>/EditMode}">
+                <ToolbarSpacer />
+                <Button icon="sap-icon://save" press="onSave" type="Accept" />
+                <Button icon="sap-icon://cancel" press="onCancel" type="Reject" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
