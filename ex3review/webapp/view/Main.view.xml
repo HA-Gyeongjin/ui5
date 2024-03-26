@@ -5,7 +5,10 @@
     <Page id="page" title="{i18n>title}">
         <content> 
             <Panel headerText="">
-            <t:Table rows="{/ConnectionSet}">
+            <t:Table 
+                rows="{/ConnectionSet}"
+                id="idTable"
+                >
                 <t:columns>
                     <!-- 6개의 컬럼 -->
 
@@ -87,10 +90,16 @@
         <footer>
             <OverflowToolbar >
                 <ToolbarSpacer />
-                <Button text="신규생성" 
-                        icon="sap-icon://create"
-                        type="Accept" 
-                        press="onCreate" />
+                <Button 
+                    text="신규생성" 
+                    icon="sap-icon://create"
+                    type="Accept" 
+                    press="onCreate" />
+                <Button 
+                    icon="sap-icon://delete"
+                    text="삭제"
+                    type="Reject"
+                    press="onDelete" />
             </OverflowToolbar>
         </footer>
     </Page>
